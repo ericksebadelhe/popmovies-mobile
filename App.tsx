@@ -8,6 +8,7 @@ import {
 
 import AppLoading from 'expo-app-loading';
 import Routes from './src/routes';
+import { StatusBar } from 'expo-status-bar';
 
 
 const App: React.FC = () => {
@@ -22,6 +23,7 @@ const App: React.FC = () => {
 
   return (
     <SafeAreaProvider>
+      <StatusBar style='light' />
       <Routes />
     </SafeAreaProvider>
   )

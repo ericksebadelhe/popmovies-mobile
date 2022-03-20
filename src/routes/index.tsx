@@ -11,7 +11,7 @@ import { defaultScreenOptions } from '../utils/defaultScreenOptions';
 
 export type RootStackParamList = {
   Home: undefined;
-  MovieDetails: undefined;
+  MovieDetails: { movieId: string };
 };
 
 const StackRoutes = createNativeStackNavigator<RootStackParamList>();
