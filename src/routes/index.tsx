@@ -3,17 +3,53 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Home from '../screens/Home';
+import MovieDetails from '../screens/MovieDetails';
+import HeaderButton from '../components/HeaderButton';
+import HeaderTitle from '../components/HeaderTitle';
 
-const StackRoutes = createNativeStackNavigator();
+import { defaultScreenOptions } from '../utils/defaultScreenOptions';
+
+export type RootStackParamList = {
+  Home: undefined;
+  MovieDetails: undefined;
+};
+
+const StackRoutes = createNativeStackNavigator<RootStackParamList>();
 
 const Routes = () => (
   <NavigationContainer>
     <StackRoutes.Navigator
       screenOptions={{
-        headerShown: false
+        ...defaultScreenOptions,
+        headerRight: () => <HeaderButton icon="more-vert" />,
       }}
     >
-      <StackRoutes.Screen name="Home" component={Home} />
+      <StackRoutes.Screen
+        name="Home"
+        component={Home}
+        options={{
+          headerTitle: props => (
+            <HeaderTitle
+              containerStyle={{ marginLeft: 16 }}
+              {...props}
+            >
+              Pop Movies
+            </HeaderTitle>),
+        }}
+      />
+      <StackRoutes.Screen
+        name="MovieDetails"
+        component={MovieDetails}
+        options={({ navigation }) => ({
+          headerTitle: props => <HeaderTitle {...props}>Movie Details</HeaderTitle>,
+          headerLeft: () => (
+            <HeaderButton
+              icon="arrow-back"
+              onPress={() => navigation.goBack()}
+            />
+          ),
+        })}
+      />
     </StackRoutes.Navigator>
   </NavigationContainer>
 );
