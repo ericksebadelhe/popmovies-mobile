@@ -2,7 +2,6 @@ import React, { useCallback, useState, useEffect } from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   Alert,
   ActivityIndicator,
   Image,
@@ -10,13 +9,12 @@ import {
 } from 'react-native';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { format } from 'date-fns';
-import { RootStackParamList } from '../routes';
-import api from '../services/api';
+import api from '../../services/api';
 
-import { Movie } from '../@types';
+import { Movie, RootStackParamList } from '../../@types';
 
-import fonts from '../styles/fonts';
-import colors from '../styles/colors';
+import colors from '../../styles/colors';
+import styles from './styles';
 
 type MovieDetailsRouteProps = RouteProp<RootStackParamList, 'MovieDetails'>;
 
@@ -68,7 +66,9 @@ const MovieDetails: React.FC = () => {
                 <View style={styles.topDetails}>
                   <View>
                     <Text style={styles.duration}>{details.category.toUpperCase()}</Text>
-                    <Text style={styles.duration}>{format(new Date(details.release_date), 'yyyy/MM/dd')}</Text>
+                    <Text style={styles.duration}>
+                      {format(new Date(details.release_date), 'yyyy/MM/dd')}
+                    </Text>
                     <Text style={styles.duration}>{details.duration} mins</Text>
                   </View>
                   <Text style={styles.rating}>{details.rating}/10</Text>
@@ -87,73 +87,5 @@ const MovieDetails: React.FC = () => {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.background,
-  },
-  duration: {
-    fontFamily: fonts.text,
-    color: colors.body_dark,
-  },
-  heading: {
-    height: 56,
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    paddingHorizontal: 16,
-    backgroundColor: colors.body,
-  },
-  title: {
-    fontSize: 16,
-    fontFamily: fonts.heading,
-    color: colors.background,
-  },
-  content: {
-    paddingHorizontal: 16,
-    marginTop: 24,
-  },
-  topContent: {
-    flexDirection: 'row',
-  },
-  thumbnail: {
-    width: 116,
-    height: 170,
-  },
-  topDetails: {
-    flex: 1,
-    justifyContent: 'space-between',
-    marginLeft: 16,
-  },
-  year: {
-    fontSize: 20,
-    fontFamily: fonts.text,
-    color: colors.body_dark,
-  },
-  rating: {
-    fontFamily: fonts.heading,
-    color: colors.body_dark,
-  },
-  button: {
-    height: 56,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 2,
-    backgroundColor: colors.accent_dark,
-  },
-  buttonText: {
-    fontFamily: fonts.heading,
-    color: colors.body_dark,
-  },
-  synopsisContainer: {
-    marginTop: 24,
-  },
-  synopsis: {
-    fontFamily: fonts.text,
-    color: colors.body,
-    textAlign: 'justify',
-  }
-});
 
 export default MovieDetails;

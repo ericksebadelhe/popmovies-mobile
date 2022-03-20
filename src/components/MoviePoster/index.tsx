@@ -1,5 +1,7 @@
 import React from 'react';
-import { TouchableOpacity, Image, TouchableOpacityProps, Dimensions } from 'react-native';
+import { TouchableOpacity, Image, TouchableOpacityProps } from 'react-native';
+
+import styles from './styles';
 
 interface MoviePosterProps extends TouchableOpacityProps {
   uri: string;
@@ -12,10 +14,8 @@ const MoviePoster: React.FC<MoviePosterProps> = ({ uri, ...rest }) => {
         source={{ uri }}
         resizeMethod="resize"
         resizeMode='cover'
-        style={{
-          width: Dimensions.get('window').width / 2,
-          height: Dimensions.get('window').height / 3
-        }} />
+        style={styles.image}
+      />
     </TouchableOpacity>
   );
 }

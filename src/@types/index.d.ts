@@ -1,3 +1,8 @@
+export type RootStackParamList = {
+  Home: undefined;
+  MovieDetails: { movieId: string };
+};
+
 export type Movie = {
   id: string;
   title: string;

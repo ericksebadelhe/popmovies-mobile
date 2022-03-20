@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, TouchableOpacityProps } from 'react-native';
+import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
-import colors from '../styles/colors';
+import colors from '../../styles/colors';
+import styles from './styles';
 
 interface HeaderButtonProps extends TouchableOpacityProps {
   icon: any;
@@ -17,13 +18,6 @@ const HeaderButton: React.FC<HeaderButtonProps> = ({ icon, size, ...rest}) => {
   );
 }
 
-const styles = StyleSheet.create({
-  button: {
-    width: 32,
-    height: 32,
-    justifyContent: 'center',
-    alignItems: 'center',
-  }
-})
+
 
 export default HeaderButton;

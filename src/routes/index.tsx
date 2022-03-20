@@ -8,11 +8,7 @@ import HeaderButton from '../components/HeaderButton';
 import HeaderTitle from '../components/HeaderTitle';
 
 import { defaultScreenOptions } from '../utils/defaultScreenOptions';
-
-export type RootStackParamList = {
-  Home: undefined;
-  MovieDetails: { movieId: string };
-};
+import { RootStackParamList } from '../@types';
 
 const StackRoutes = createNativeStackNavigator<RootStackParamList>();
 

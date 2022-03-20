@@ -1,14 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { View, FlatList, StyleSheet } from 'react-native';
+import { View, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import api from '../services/api';
+import api from '../../services/api';
 
-import MoviePoster from '../components/MoviePoster';
+import MoviePoster from '../../components/MoviePoster';
 
-import { GetMoviesData } from '../@types';
-
-import colors from '../styles/colors';
-import fonts from '../styles/fonts';
+import { GetMoviesData } from '../../@types';
+import styles from './styles';
 
 const Home: React.FC = () => {
   const { navigate } = useNavigation();
@@ -48,22 +46,5 @@ const Home: React.FC = () => {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.background,
-
-  },
-  text: {
-    fontSize: 32,
-    fontFamily: fonts.heading,
-    color: colors.heading,
-  },
-  list: {
-    flex: 1,
-    marginBottom: 24,
-  }
-});
 
 export default Home;
